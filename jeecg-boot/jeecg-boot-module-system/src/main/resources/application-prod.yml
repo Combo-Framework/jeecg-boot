@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9000
   tomcat:
     max-swallow-size: -1
   error:
@@ -132,8 +132,8 @@ spring:
       datasource:
         master:
           url: jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
-          username: root
-          password: root
+          username: jeecg-boot
+          password: AiEPG2aLErAcShcb
           driver-class-name: com.mysql.cj.jdbc.Driver
           # 多数据源配置
           #multi-datasource1:
