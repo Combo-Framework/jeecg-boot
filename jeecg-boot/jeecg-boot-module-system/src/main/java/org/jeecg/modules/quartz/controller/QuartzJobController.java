@@ -18,8 +18,6 @@ import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
 import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,12 +45,10 @@ import java.util.Map;
 public class QuartzJobController {
 	@Autowired
 	private IQuartzJobService quartzJobService;
-	@Autowired
-	private Scheduler scheduler;
 
 	/**
 	 * 分页列表查询
-	 * 
+	 *
 	 * @param quartzJob
 	 * @param pageNo
 	 * @param pageSize
@@ -71,7 +67,7 @@ public class QuartzJobController {
 
 	/**
 	 * 添加定时任务
-	 * 
+	 *
 	 * @param quartzJob
 	 * @return
 	 */
@@ -84,25 +80,20 @@ public class QuartzJobController {
 
 	/**
 	 * 更新定时任务
-	 * 
+	 *
 	 * @param quartzJob
 	 * @return
 	 */
 	//@RequiresRoles("admin")
 	@RequestMapping(value = "/edit", method ={RequestMethod.PUT, RequestMethod.POST})
 	public Result<?> eidt(@RequestBody QuartzJob quartzJob) {
-		try {
-			quartzJobService.editAndScheduleJob(quartzJob);
-		} catch (SchedulerException e) {
-			log.error(e.getMessage(),e);
-			return Result.error("更新定时任务失败!");
-		}
+		quartzJobService.editAndScheduleJob(quartzJob);
 	    return Result.ok("更新定时任务成功!");
 	}
 
 	/**
 	 * 通过id删除
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -120,7 +111,7 @@ public class QuartzJobController {
 
 	/**
 	 * 批量删除
-	 * 
+	 *
 	 * @param ids
 	 * @return
 	 */
@@ -139,7 +130,7 @@ public class QuartzJobController {
 
 	/**
 	 * 暂停定时任务
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -157,7 +148,7 @@ public class QuartzJobController {
 
 	/**
 	 * 启动定时任务
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -176,7 +167,7 @@ public class QuartzJobController {
 
 	/**
 	 * 通过id查询
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -188,7 +179,7 @@ public class QuartzJobController {
 
 	/**
 	 * 导出excel
-	 * 
+	 *
 	 * @param request
 	 * @param quartzJob
 	 */
@@ -209,7 +200,7 @@ public class QuartzJobController {
 
 	/**
 	 * 通过excel导入数据
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return

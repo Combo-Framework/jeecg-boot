@@ -2,7 +2,6 @@ package org.jeecg.modules.quartz.job;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.util.DateUtils;
-import org.quartz.*;
 
 /**
  * @Description: 同步定时任务测试
@@ -14,13 +13,10 @@ import org.quartz.*;
  * @author: taoyan
  * @date: 2020年06月19日
  */
-@PersistJobDataAfterExecution
-@DisallowConcurrentExecution
 @Slf4j
-public class AsyncJob implements Job {
+public class AsyncJob {
 
-    @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+    public void execute(){
         log.info(" --- 同步任务调度开始 --- ");
         try {
             //此处模拟任务执行时间 5秒  任务表达式配置为每秒执行一次：0/1 * * * * ? *

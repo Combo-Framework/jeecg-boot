@@ -3,7 +3,6 @@ package org.jeecg.modules.quartz.service;
 import java.util.List;
 
 import org.jeecg.modules.quartz.entity.QuartzJob;
-import org.quartz.SchedulerException;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -19,7 +18,7 @@ public interface IQuartzJobService extends IService<QuartzJob> {
 
 	boolean saveAndScheduleJob(QuartzJob quartzJob);
 
-	boolean editAndScheduleJob(QuartzJob quartzJob) throws SchedulerException;
+	boolean editAndScheduleJob(QuartzJob quartzJob);
 
 	boolean deleteAndStopJob(QuartzJob quartzJob);
 
@@ -34,7 +33,6 @@ public interface IQuartzJobService extends IService<QuartzJob> {
 	/**
 	 * 暂停任务
 	 * @param quartzJob
-	 * @throws SchedulerException
 	 */
 	void pause(QuartzJob quartzJob);
 }
